@@ -1,0 +1,24 @@
+<div class="backdrop" (click)="onClose()"></div>
+<div class="alert-box">
+    
+<form (submit)="AddPost(f)" #f="ngForm" enctype="multipart/form-data">
+    <div class="content">
+<div class="form-group">
+    <label class="form-Label" id="title" name="title">Title</label>
+    <input class="form-text" type="text" for="title" id="Inputtitle" name="Inputtitle" ngModel required>
+</div>
+<div class="form-group">
+    <label class="form-Label" id="content" name="content">Content</label>
+    <input class="form-text" type="text" for="content" id="Inputcontent" name="Inputcontent" ngModel multiple required>
+</div>
+<div class="form-group">
+    <label class="form-Label" id="Image" name="Image">Image</label>
+    <input class="form-text" type="file" for="Image" id="InputImage" name="InputImage" ngModel required (change)="selectImage($event)">
+</div>
+<button type="submit" [disabled]="!f.valid">Add Post</button>
+</div>
+</form>
+<div class="alert-box-actions">
+    <button class="btn btn-primary" (click)="onClose()">Close</button>
+  </div>
+</div>

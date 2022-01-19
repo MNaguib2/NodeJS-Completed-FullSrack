@@ -1,0 +1,21 @@
+{
+  "name": "f-restapi",
+  "version": "1.0.0",
+  "description": "npm i init\r npm i --save express\r npm i --save-dev nodemon",
+  "main": "index.js",
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "init": "^0.1.2",
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

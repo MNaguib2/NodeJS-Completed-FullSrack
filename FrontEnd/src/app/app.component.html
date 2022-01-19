@@ -1,0 +1,6 @@
+<app-nav-bar (Items)="showItemsPost($event)">
+    <div *ngIf="body !== undefined || null " id="MessageLeft">{{body}}</div>
+</app-nav-bar>
+
+<app-main-page [POSTS] = "Items" (Body)="ShowMessage($event)"></app-main-page>
+<!-- <app-new-post></app-new-post> -->
