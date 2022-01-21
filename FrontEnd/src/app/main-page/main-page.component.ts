@@ -17,6 +17,8 @@ export class MainPageComponent implements OnInit, OnDestroy {
   @ViewChild(PlaceholderDirective, { static: false }) alertHost!: PlaceholderDirective;
   @Input() POSTS!: Observable<Post[]>;
   @Output() Body = new EventEmitter<void>();
+  @Output() View = new EventEmitter<{id : number}>();
+
 
   POSTSItem !: Array<Post>;
   //Read More and Less
@@ -26,7 +28,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
   limit: number = 100;
   //Read More and Less
 
-  subscribe !: Subscription;
+  //subscribe !: Subscription;
 
 
 
@@ -42,7 +44,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
       //console.log(data);
       this.nonEditedContent.splice(0,this.nonEditedContent.length);
       this.content.splice(0,this.content.length);
-      for (let i = 0; i < data.length; i++) {
+      for (let i = 0; i < data.length; i++) {        
         this.nonEditedContent.push(data[i].content);
         const limit2 = this.nonEditedContent[i].substr(0, this.limit).lastIndexOf(' ');
         if (limit2 > 0) {
@@ -52,20 +54,18 @@ export class MainPageComponent implements OnInit, OnDestroy {
         }
         this.isContentToggled.push(false);
       }
-    })
+    });
   }
   ngOnDestroy(): void {
-    this.subscribe.unsubscribe();
+    //this.subscribe.unsubscribe();
   }
 
   NewPost() {
     this.showNewPOstAlert();
   }
+
   showNewPOstAlert() {
-    //console.log('test');
-    const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(
-      NewPostComponent
-    );
+    const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(NewPostComponent);
     const hostViewContainerRef = this.alertHost.viewContainerRef;
     hostViewContainerRef.clear();
 
@@ -74,10 +74,10 @@ export class MainPageComponent implements OnInit, OnDestroy {
       hostViewContainerRef.clear();
     });
     componentRef.instance.Body.subscribe(data => {
-      //console.log(data);
       this.Body.emit(data);
     })
   }
+
   showButton(index: number) {
     const ButtonsPanel = document.getElementsByClassName("buttons")[index];
     ButtonsPanel.setAttribute("style", "  right:3px; top: 100%; padding-top:1%; animation-name: ShowBUttoNS; animation-duration: 1s; z-index: 1;");
@@ -111,4 +111,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
     })
   }
 
+  OnclickView(id: number){
+    this.View.emit({id: id});
+  }
 }

@@ -10,6 +10,8 @@ import { NewPostComponent } from './new-post/new-post.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PlaceholderDirective } from './Core/placeholder.directive';
 import { FormsModule } from '@angular/forms';
+import { ViewPostComponent } from './view-post/view-post.component';
+import { RoutingDirective } from './Core/routing.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     MainPageComponent,
     NewPostComponent,
     NavBarComponent,
-    PlaceholderDirective
+    PlaceholderDirective,
+    ViewPostComponent,
+    RoutingDirective
   ],
   imports: [
     BrowserModule,

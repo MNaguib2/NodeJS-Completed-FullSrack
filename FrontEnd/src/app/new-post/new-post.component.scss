@@ -1,5 +1,5 @@
 .form-group {
-    margin-top: 4vh;    
+    margin-top: 1vh;    
 }
 .form-Label{
     display: block;
@@ -8,7 +8,12 @@
     font-weight: bold;
 }
 .form-text{
-    width: 90%;
+    width: 90%;    
+}
+.viewImage{
+  margin-top: 1vh;
+  width: 90%;
+  height: 31.5vh;
 }
 
 form button {
@@ -36,7 +41,7 @@ form button {
   
   .alert-box {
     position: fixed;
-    top: 30vh;
+    top: 20vh;
     left: 20vw;
     width: 60vw;
     padding: 16px;

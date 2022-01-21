@@ -8,12 +8,13 @@
     <input class="form-text" type="text" for="title" id="Inputtitle" name="Inputtitle" ngModel required>
 </div>
 <div class="form-group">
-    <label class="form-Label" id="content" name="content">Content</label>
-    <input class="form-text" type="text" for="content" id="Inputcontent" name="Inputcontent" ngModel multiple required>
-</div>
-<div class="form-group">
     <label class="form-Label" id="Image" name="Image">Image</label>
     <input class="form-text" type="file" for="Image" id="InputImage" name="InputImage" ngModel required (change)="selectImage($event)">
+    <img class="viewImage" [src]="filePath" alt="Please Select Image">
+</div>
+<div class="form-group">
+    <label class="form-Label" id="content" name="content">Content</label>
+    <textarea class="form-text" for="content" id="Inputcontent" name="Inputcontent" ngModel multiple required></textarea>
 </div>
 <button type="submit" [disabled]="!f.valid">Add Post</button>
 </div>

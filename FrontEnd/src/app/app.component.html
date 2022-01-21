@@ -2,5 +2,6 @@
     <div *ngIf="body !== undefined || null " id="MessageLeft">{{body}}</div>
 </app-nav-bar>
 
-<app-main-page [POSTS] = "Items" (Body)="ShowMessage($event)"></app-main-page>
-<!-- <app-new-post></app-new-post> -->
+<app-main-page *ngIf="IdView == 0" [POSTS] = "Items" (Body)="ShowMessage($event)" (View)="OpenViewPost($event)"></app-main-page>
+
+<app-view-post *appRouting="IdView" ></app-view-post>
