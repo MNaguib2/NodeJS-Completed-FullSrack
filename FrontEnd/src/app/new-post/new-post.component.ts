@@ -26,7 +26,6 @@ export class NewPostComponent implements OnInit {
     formData.append('file', this.image, this.image.name);
     formData.append('title', signupForm.form.value.Inputtitle);
     formData.append('content', signupForm.form.value.Inputcontent);
-    //console.log(formData);
 
     this.http.post('http://localhost:3000/feed/post', formData, { observe: 'response' }).subscribe((data: any) => {
       if (data.status === 201) {
@@ -34,6 +33,9 @@ export class NewPostComponent implements OnInit {
         this.Body.emit(data.body);
         this.onClose();
       }
+    },(error) => {
+      console.log(error.error);
+      this.Body.emit(error.error);
     })
   }
   filePath !: string;

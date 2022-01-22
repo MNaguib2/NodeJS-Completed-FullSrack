@@ -12,18 +12,25 @@ export class AppComponent {
   @Output('Items') Items = new EventEmitter<Post[]>()
   body !: string;
   IdView : number = 0;
+  homeandfeed : string = 'Feed';
+  post !: Post;
 
   showItemsPost(POSTS : {'Post': Post[] , 'message' : string}){
     this.IdView = 0;
+    this.homeandfeed = 'Feed';
     this.Items.emit(POSTS.Post);
     this.body = POSTS.message;
   }
 
   ShowMessage(body : any){
      this.body = body.message;
+    if(body.post){
+      this.post = body.post;
+    }
   }
   
   OpenViewPost(event: {id : number}){
+    this.homeandfeed = 'Home';
       this.IdView = event.id;
   }
 }

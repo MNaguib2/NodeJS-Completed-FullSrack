@@ -4,7 +4,7 @@ export class Post {
         public title: string,
         public content: string,
         public ImageUrl: string,
-        public creator : Object,
+        public creator : Array<Object>,
         public CreatAt : Date
         ){}
   }

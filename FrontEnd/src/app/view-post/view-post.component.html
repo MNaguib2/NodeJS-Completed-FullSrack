@@ -1,1 +1,12 @@
-<p>view-post works!</p>
+<div class="Image">
+<img  style="max-width: 100%" [src]="Post.ImageUrl">
+</div>
+<hr>
+<div class="details">
+        <h1 class="title">{{Post.title}}</h1>
+        <p class="content">{{Post.content}}</p>
+</div>
+    <h2 class="anotherDetail">Creat At : {{Post.CreatAt}}</h2>
+    <h2 class="anotherDetail">Creator</h2>
+    <ng-container *ngFor="let creator of Post.creator"></ng-container>
+    <h3>Name : {{ creator.name }}</h3>

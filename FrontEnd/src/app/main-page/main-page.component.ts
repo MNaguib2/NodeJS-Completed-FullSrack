@@ -16,7 +16,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
   Loading: boolean = false;
   @ViewChild(PlaceholderDirective, { static: false }) alertHost!: PlaceholderDirective;
   @Input() POSTS!: Observable<Post[]>;
-  @Output() Body = new EventEmitter<void>();
+  @Output() Body = new EventEmitter<any>();
   @Output() View = new EventEmitter<{id : number}>();
 
 
@@ -37,6 +37,8 @@ export class MainPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
      load.Loading.subscribe(data => {
       this.Loading = data;
+    },(error) => {
+      console.log(error);
     });
 
    this.POSTS.subscribe(data => {
@@ -111,7 +113,15 @@ export class MainPageComponent implements OnInit, OnDestroy {
     })
   }
 
-  OnclickView(id: number){
-    this.View.emit({id: id});
+  OnclickView(id: number){    
+    this.http.get(`http://localhost:3000/feed/post/${id}`,{observe: 'response'}).subscribe((data : any) => {      
+      if(data.status === 201 && data.body.post.id !== null){
+        this.Body.emit(data.body);
+        this.View.emit({id: id});
+      }else{
+        const message = {message : 'This ID is Not Exsit in DB'}
+        this.Body.emit(message);
+      }      
+  });    
   }
 }

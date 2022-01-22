@@ -13,7 +13,7 @@ const fileStorage = multer.diskStorage({
     ,
     filename: (req, file, cb) => {
       //console.log(new Date().toISOString().replace(/:/g, '')/*.replace(/\..+/, '')*/ + '-' + file.originalname);
-        cb(null , new Date().toISOString().replace(/:/g, '') + '-' + file.originalname.replace(/ /g, ''))
+        cb(null , new Date().toISOString().replace(/:/g, '') + '-' + file.originalname.replace(/ /g, ''));
     }
 })
 const fileFilter = (req, file, cb) => {
@@ -27,7 +27,7 @@ const fileFilter = (req, file, cb) => {
       cb(null, false);
     }
   };
-
+//console.log(__dirname); //this is globally direct
 app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('file'));
 app.use('/Images',express.static(path.join(_dirname, 'Images')));
 

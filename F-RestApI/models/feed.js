@@ -80,4 +80,17 @@ module.exports = class POST {
             })
         })
     }
+
+    static findByID(id , cb) {
+        let POst;
+        GetAllPostFromFile(Posts => {
+             const getPOst = Posts.find(post => post.id === id);
+             if(getPOst != undefined){
+                POst = getPOst;
+             }else{
+                POst = {id: null, title: null, content: null, ImageUrl: null, creator: null, CreatAt: null} 
+             }
+             cb(POst);
+        })        
+    }
 }

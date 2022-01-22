@@ -15,8 +15,7 @@ export class RoutingDirective {
   constructor(private templateRef : TemplateRef<any> , 
     private container : ViewContainerRef,
     private http : HttpClient) {
-    this.container.clear();
-    
+    this.container.clear();    
   }
 
 }
