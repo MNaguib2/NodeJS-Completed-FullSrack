@@ -7,7 +7,7 @@
         <p class="content">{{Post.content}}</p>
 </div>
     <h2 class="anotherDetail">Creat At : {{Post.CreatAt | date}}</h2>
-    <h2 class="anotherDetail">Creator</h2>
-    <ng-container *ngFor="let creator of Post.creator">
-    <h3>Name : {{ creator}}</h3>
-</ng-container>
+    <div class="creatr anotherDetail">
+    <h2 style="font-style: italic;">Creator</h2>
+    <h3 style="margin-left: -40vw;">Name : {{ Post.creator.name }}</h3>
+</div>

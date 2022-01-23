@@ -1,6 +1,8 @@
 <div class="backdrop" (click)="onClose()"></div>
 <div class="alert-box">
     
+        <h2 style="padding-bottom: 13px; height: 5px; color: #5F11C1">New Post</h2>
+        <hr style="background-color: #5F11C1; height: 1px;">
 <form (submit)="AddPost(f)" #f="ngForm" enctype="multipart/form-data">
     <div class="content">
 <div class="form-group">
@@ -10,11 +12,11 @@
 <div class="form-group">
     <label class="form-Label" id="Image" name="Image">Image</label>
     <input class="form-text" type="file" for="Image" id="InputImage" name="InputImage" ngModel required (change)="selectImage($event)">
-    <img class="viewImage" [src]="filePath" alt="Please Select Image">
+    <img class="viewImage" [src]="filePath" >
 </div>
 <div class="form-group">
     <label class="form-Label" id="content" name="content">Content</label>
-    <textarea class="form-text" for="content" id="Inputcontent" name="Inputcontent" ngModel multiple required></textarea>
+    <textarea class="form-Areatext" for="content" id="Inputcontent" name="Inputcontent" ngModel multiple required></textarea>
 </div>
 <button type="submit" [disabled]="!f.valid">Add Post</button>
 </div>

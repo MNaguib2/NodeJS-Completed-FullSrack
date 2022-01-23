@@ -15,11 +15,15 @@ export class AppComponent {
   homeandfeed : string = 'Feed';
   post !: Post;
 
-  showItemsPost(POSTS : {'Post': Post[] , 'message' : string}){
-    this.IdView = 0;
+  showItemsPost(POSTS : {'Post': Post[] , 'message' : string}){    
     this.homeandfeed = 'Feed';
     this.Items.emit(POSTS.Post);
-    this.body = POSTS.message;
+    if(this.IdView = 0){
+      this.body = POSTS.message;
+    }else{
+      this.body = "Now In Home Page";
+      this.IdView = 0;    
+    }    
   }
 
   ShowMessage(body : any){

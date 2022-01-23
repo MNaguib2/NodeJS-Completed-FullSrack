@@ -28,6 +28,11 @@ form button {
   position: relative;
   max-width: 35vw;
 }
+.form-Areatext{
+  width: 50vw;
+  height: 15vh;
+  resize: none;
+}
 
 .backdrop {
     position: fixed;
@@ -41,15 +46,21 @@ form button {
   
   .alert-box {
     position: fixed;
-    top: 20vh;
+    top: 15vh;
     left: 20vw;
     width: 60vw;
-    padding: 16px;
+    padding: 6px;
     z-index: 100;
     background: white;
     box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
   }
   
   .alert-box-actions {
+    position: absolute;
     text-align: right;
+    top: 70vh;
+    left: 52vw;
+  }
+  .address {
+    color: #5F11C1;    
   }

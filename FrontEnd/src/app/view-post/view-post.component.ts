@@ -11,7 +11,6 @@ export class ViewPostComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.Post);
-  }
+    }
 
 }
