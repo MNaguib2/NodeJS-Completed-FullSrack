@@ -6,7 +6,7 @@
             <h3 id="Update">UPDATE</h3>
         </section>
         <section>
-            <button type="button" id="newPost" (click)="showNewPOstAlert()">NEW POST</button>
+            <button type="button" id="newPost" (click)="showNewPOstAlert('New Post' , 0)">NEW POST</button>
         </section>
         <section>
             <div class="sk-chase" id="spinner" *ngIf="Loading; else showData">
@@ -40,7 +40,7 @@
                             </div>
                             <div class="buttons">
                                 <button class="button" style="background-color: #f44336;" (click)="OnDeletePost(post.id)" type="button">Delete</button>
-                                <button class="button" style="background-color: #4CAF50;" type="button">Edite</button>
+                                <button class="button" style="background-color: #4CAF50;" type="button" (click)="showNewPOstAlert('Edit Post',post.id)">Edite</button>
                                 <button class="button" style="background-color: #008CBA;" type="button" (click)="OnclickView(post.id)">View</button>
                             </div>
                         </div>

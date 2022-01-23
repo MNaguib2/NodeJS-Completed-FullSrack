@@ -1,5 +1,5 @@
 <app-nav-bar (Items)="showItemsPost($event)" [Viewed]="homeandfeed">
-    <div *ngIf="body !== undefined || null " id="MessageLeft">{{body}}</div>
+    <div *ngIf="body !== undefined || null " id="MessageLeft">{{ body }}</div>
 </app-nav-bar>
 
 <app-main-page *ngIf="IdView == 0" [POSTS] = "Items" (Body)="ShowMessage($event)" (View)="OpenViewPost($event)"></app-main-page>

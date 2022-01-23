@@ -15,7 +15,7 @@ export class NavBarComponent implements OnInit {
   }
   getFeed(){
     this.http.get('http://localhost:3000/feed/POSTAll').subscribe((data: any) => {
-       //console.log(data.message);
+       //console.log(data);
        this.Items.emit({'Post': data.posts,'message': data.message});
     }, (err) => {
       console.log('this is Error In server ' , err)

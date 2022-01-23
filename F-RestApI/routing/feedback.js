@@ -16,4 +16,6 @@ router.get('/post/:id' , feedController.getPOstByID);
 
 router.get('/POSTAll', feedController.getPost);
 
+router.put('/post', feedController.PutEditPost );
+
 module.exports = router;

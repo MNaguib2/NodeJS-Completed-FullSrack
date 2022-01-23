@@ -17,8 +17,8 @@ export class AppComponent {
 
   showItemsPost(POSTS : {'Post': Post[] , 'message' : string}){    
     this.homeandfeed = 'Feed';
-    this.Items.emit(POSTS.Post);
-    if(this.IdView = 0){
+    this.Items.emit(POSTS.Post);    
+    if(this.IdView == 0){
       this.body = POSTS.message;
     }else{
       this.body = "Now In Home Page";

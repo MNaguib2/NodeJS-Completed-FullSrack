@@ -34,9 +34,13 @@ module.exports = class POST {
         GetAllPostFromFile(Post => {
             if (this.id) {
                 const POSTToUpdateIndex = Post.findIndex(post => post.id == this.id);
-                Post[POSTToUpdateIndex] = this;
+            Post[POSTToUpdateIndex] = { id: this.id, title: this.title, content: this.content, ImageUrl: this.ImageUrl, creator: this.creator, CreatAt: this.CreatAt };
             } else {
                 this.id = Math.random().toString();
+                let IdExsit;
+                do {
+                    IdExsit = Post.findIndex(post => post.id == this.id);
+                } while (IdExsit !== -1)
                 Post.push({ id: this.id, title: this.title, content: this.content, ImageUrl: this.ImageUrl, creator: this.creator, CreatAt: this.CreatAt });
             }
             //console.log(Post);
@@ -61,36 +65,36 @@ module.exports = class POST {
                 const UpdatePost = Posts.filter(post => post.id !== Id);
 
                 const ImageName = new URL(postDelete.ImageUrl).pathname;
-                const ImageUrl = path.join(_dirname ,ImageName );
+                const ImageUrl = path.join(_dirname, ImageName);
                 //console.log(ImageUrl);
-                
-                fs.unlink(ImageUrl , (err) => {
+
+                fs.unlink(ImageUrl, (err) => {
                     if (err) {
-                        return rej('In Delete File '+ err);
+                        return rej('In Delete File ' + err);
                     }
                 });
 
-                fs.writeFile(p, JSON.stringify(UpdatePost), (err) => {                            
+                fs.writeFile(p, JSON.stringify(UpdatePost), (err) => {
                     if (!err) {
                         return res('the Deleted Item is Done !');
                     } else {
-                        return rej('In Update File JSON '+ err);
+                        return rej('In Update File JSON ' + err);
                     }
                 })
             })
         })
     }
 
-    static findByID(id , cb) {
+    static findByID(id, cb) {
         let POst;
         GetAllPostFromFile(Posts => {
-             const getPOst = Posts.find(post => post.id === id);
-             if(getPOst != undefined){
+            const getPOst = Posts.find(post => post.id === id);
+            if (getPOst != undefined) {
                 POst = getPOst;
-             }else{
-                POst = {id: null, title: null, content: null, ImageUrl: null, creator: null, CreatAt: null} 
-             }
-             cb(POst);
-        })        
+            } else {
+                POst = { id: null, title: null, content: null, ImageUrl: null, creator: null, CreatAt: null }
+            }
+            cb(POst);
+        })
     }
 }

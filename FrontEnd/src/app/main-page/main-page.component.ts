@@ -28,14 +28,14 @@ export class MainPageComponent implements OnInit, OnDestroy {
   limit: number = 100;
   //Read More and Less
 
-  //subscribe !: Subscription;
+  subscribe !: Subscription;
 
 
 
   constructor(private http: HttpClient, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
-     load.Loading.subscribe(data => {
+     this.subscribe = load.Loading.subscribe(data => {
       this.Loading = data;
     },(error) => {
       console.log(error);
@@ -59,25 +59,26 @@ export class MainPageComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy(): void {
-    //this.subscribe.unsubscribe();
+    this.subscribe.unsubscribe();
   }
 
-  NewPost() {
-    this.showNewPOstAlert();
-  }
 
-  showNewPOstAlert() {
+  showNewPOstAlert(NewEditePost:string , id : number) {
+    this.subscribe.unsubscribe();
     const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(NewPostComponent);
     const hostViewContainerRef = this.alertHost.viewContainerRef;
     hostViewContainerRef.clear();
 
     const componentRef = hostViewContainerRef.createComponent(alertCmpFactory);
     componentRef.instance.close.subscribe(() => {
+      this.ngOnInit();    
       hostViewContainerRef.clear();
     });
     componentRef.instance.Body.subscribe(data => {
       this.Body.emit(data);
     })
+    componentRef.instance.NewEditePost = NewEditePost;
+    componentRef.instance.ID = id;
   }
 
   showButton(index: number) {

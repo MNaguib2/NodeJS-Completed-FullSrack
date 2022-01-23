@@ -11,6 +11,8 @@
 const { validationResult }  = require('express-validator/check'); 
 const fs = require('fs');
 const POST = require('../models/feed');
+const url = require('url');
+
 
 exports.getPost = (req, res, next) => {
   POST.FetchAll(Posts => {
@@ -33,7 +35,7 @@ exports.createPost = (req, res, next) => {
     // throw error;    
     fs.unlink(FileUrl , (err) => {
       if (err) {
-          return rej('In Delete File '+ err);
+          return new Error('Not Delete file');
       }
   });
 
@@ -83,6 +85,32 @@ exports.getPOstByID = (req, res, next) => {
     res.status(201).json({
       message: 'Get Post By ID Successful!',
       post: Post,
+    })
+  }) 
+}
+exports.PutEditPost = (req, res, next) => {
+  const Id = req.query.id;
+  let FileUrl;
+  POST.findByID(Id, Post => {
+    if(req.file){
+      const backPath = url.parse(Post.ImageUrl).pathname;
+      fs.unlink('.'+backPath , (err) => {
+        if(err){
+          return new Error('Not Delete file'); 
+        }
+      })
+       FileUrl = "http://localhost:3000/" + req.file.path; 
+    }else{
+      FileUrl = Post.ImageUrl;
+    }
+    new POST(req.body.title , req.body.content, FileUrl,Post.creator, Post.CreatAt, Id).save
+    .then(result => {
+      console.log(result);
+      res.status(200).json({
+        message: 'Post Edit successfully! '
+      });
+    }).catch(err => {
+
     })
   })
 }
