@@ -18,4 +18,6 @@ router.get('/POSTAll', feedController.getPost);
 
 router.put('/post', feedController.PutEditPost );
 
+router.post('/test' , feedController.test);
+
 module.exports = router;

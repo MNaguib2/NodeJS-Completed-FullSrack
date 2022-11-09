@@ -9,6 +9,7 @@
             <button type="button" id="newPost" (click)="showNewPOstAlert('New Post' , 0)">NEW POST</button>
         </section>
         <section>
+<!--SPinner Load ////////////////////////////////////////////////////////////////////////////////////-->
             <div class="sk-chase" id="spinner" *ngIf="Loading; else showData">
                 <div class="sk-chase-dot"></div>
                 <div class="sk-chase-dot"></div>
@@ -17,6 +18,7 @@
                 <div class="sk-chase-dot"></div>
                 <div class="sk-chase-dot"></div>
             </div>
+<!--SPinner Load ////////////////////////////////////////////////////////////////////////////////////-->
             <ng-template #showData>
                 <ng-container *ngIf="content.length > 0">
                     <div class="ItemsData" *ngFor="let post of POSTSItem; index as i">

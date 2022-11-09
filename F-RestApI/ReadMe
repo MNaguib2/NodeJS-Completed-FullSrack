@@ -2,3 +2,4 @@ npm init
 npm i --save express
 npm i --save-dev nodemon
 npm i --save body-parser
+npm install --save multer

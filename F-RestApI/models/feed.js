@@ -34,7 +34,8 @@ module.exports = class POST {
         GetAllPostFromFile(Post => {
             if (this.id) {
                 const POSTToUpdateIndex = Post.findIndex(post => post.id == this.id);
-            Post[POSTToUpdateIndex] = { id: this.id, title: this.title, content: this.content, ImageUrl: this.ImageUrl, creator: this.creator, CreatAt: this.CreatAt };
+            Post[POSTToUpdateIndex] = { id: this.id, title: this.title, 
+                    content: this.content, ImageUrl: this.ImageUrl, creator: this.creator, CreatAt: this.CreatAt };
             } else {
                 this.id = Math.random().toString();
                 let IdExsit;

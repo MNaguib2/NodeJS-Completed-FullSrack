@@ -114,3 +114,8 @@ exports.PutEditPost = (req, res, next) => {
     })
   })
 }
+
+exports.test =(req, res, next) => {
+  console.log(req.body);
+  res.end();
+}

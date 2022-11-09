@@ -83,6 +83,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
   showButton(index: number) {
     const ButtonsPanel = document.getElementsByClassName("buttons")[index];
+    // console.log(<HTMLDivElement><unknown>document.getElementsByClassName("title"));
     ButtonsPanel.setAttribute("style", "  right:3px; top: 100%; padding-top:1%; animation-name: ShowBUttoNS; animation-duration: .5s; z-index: 1;");
   }
   HideButton(index: number) {
