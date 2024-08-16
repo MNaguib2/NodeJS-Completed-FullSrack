@@ -16,7 +16,7 @@ const fileStorage = multer.diskStorage({
         cb(null , new Date().toISOString().replace(/:/g, '') + '-' + file.originalname.replace(/ /g, ''));
     }
 })
-const fileFilter = (req, file, cb) => {
+const fileFilter = (req, file, cb) => { // to define type data Import
     if (
       file.mimetype === 'image/png' ||
       file.mimetype === 'image/jpg' ||

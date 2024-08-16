@@ -86,7 +86,7 @@ module.exports = class POST {
         })
     }
 
-    static findByID(id, cb) {
+    static findByID(id, done) {
         let POst;
         GetAllPostFromFile(Posts => {
             const getPOst = Posts.find(post => post.id === id);
@@ -95,7 +95,7 @@ module.exports = class POST {
             } else {
                 POst = { id: null, title: null, content: null, ImageUrl: null, creator: null, CreatAt: null }
             }
-            cb(POst);
+            done(POst);
         })
     }
 }
